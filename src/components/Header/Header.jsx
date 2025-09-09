@@ -7,7 +7,7 @@ export default function Header() {
             <nav className={css.navbar}>
                 <NavLink to="/">
                     <svg className={css.logo} width="104" height="16">
-                        <use href="../../../public/sprite.svg#icon-Logo"></use>
+                        <use href="/sprite.svg#icon-Logo"></use>
                     </svg>
                 </NavLink>
                 <div className={css.navLinks}>

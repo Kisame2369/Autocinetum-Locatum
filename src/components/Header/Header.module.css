@@ -1,0 +1,28 @@
+.navbar {
+    display: flex;
+    padding: 26px 0;
+}
+
+.logo {
+    margin-left: 120px;
+}
+
+.navLinks {
+    margin-left: auto;
+    margin-right: 120px;
+    display: flex;
+    gap: 32px;
+}
+
+.link {
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    transition: color 0.3s ease;
+}
+
+.link:hover,
+.link:focus {
+    color: var(--dark-blue);   
+}

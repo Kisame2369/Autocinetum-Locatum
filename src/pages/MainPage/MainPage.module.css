@@ -1,0 +1,56 @@
+.mainPage {
+    background-image: image-set(
+        url('/src/assets/img/picture@1x.png') 1x,
+        url('/src/assets/img/picture@2x.png') 2x
+    );
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.mainText {
+    text-align: center;
+}
+
+.titel {
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 72px;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.text {
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 40px;
+}
+
+.button {
+    width: 276px;
+    height: 44px;
+    border-radius: 12px;
+    background-color: var(--blue);
+    color: var(--white);
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 16px; 
+    line-height: 20px;
+    text-align: center;
+    border: none;
+    margin-bottom: 60px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--dark-blue);    
+}

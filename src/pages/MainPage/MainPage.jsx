@@ -1,12 +1,28 @@
 import css from "./MainPage.module.css";
 import { Link } from "react-router-dom";
 import { selectCars } from "../../redux/cars/selectors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchCars } from "../../redux/cars/operations";
+import { fetchBrands } from "../../redux/brands/operations.js";
+import { selectBrands } from "../../redux/brands/selectors.js";
 
 export default function MainPage() {
+    
     const cars = useSelector(selectCars);
+    const brands = useSelector(selectBrands);
+    const dispatch = useDispatch();
+
+     useEffect(() => {
+        dispatch(fetchCars({}), );
+     }, [dispatch]);
+    
+    useEffect(() => {
+        dispatch(fetchBrands());
+     }, [dispatch]);
 
     console.log(cars);
+    console.log(brands);
 
     return (
         <div className={css.mainPage}>

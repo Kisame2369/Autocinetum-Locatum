@@ -1,7 +1,13 @@
-import css from "./MainPage.module.css"
+import css from "./MainPage.module.css";
 import { Link } from "react-router-dom";
+import { selectCars } from "../../redux/cars/selectors";
+import { useSelector } from "react-redux";
 
 export default function MainPage() {
+    const cars = useSelector(selectCars);
+
+    console.log(cars);
+
     return (
         <div className={css.mainPage}>
             

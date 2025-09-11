@@ -12,7 +12,7 @@ export default function LoadMoreBtn() {
     const currentPage = useSelector(selectCurrentPage);
 
     const handleLoadMore = () => {
-        dispatch(fetchCars({ page: Number(currentPage) + 1 }));
+        dispatch(fetchCars({ page: currentPage + 1 }));
     };
 
     return (

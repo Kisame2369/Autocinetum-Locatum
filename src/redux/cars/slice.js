@@ -32,15 +32,15 @@ const carsSlice = createSlice({
             state.isLoading = false;
             const { cars, totalCars, totalPages, page } = action.payload;
 
-            if (page === "1") {
+            if (Number(page) === 1) {
                 state.items = cars;
             } else {
                 state.items = [...state.items, ...cars];
             }
-            
+
             state.totalCars = totalCars;
             state.totalPages = totalPages;
-            state.page = page;
+            state.page = Number(page);
         })
         .addCase(fetchCars.rejected, (state, action) => {
             state.isLoading = false;

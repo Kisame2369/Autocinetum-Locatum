@@ -2,12 +2,13 @@ import css from './Filters.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBrands } from '../../redux/brands/selectors';
 import { fetchCars } from '../../redux/cars/operations';
+import { resetCars } from '../../redux/cars/slice';
 
 export default function Filters() {
 
-    const dispatch = useDispatch
+    const dispatch = useDispatch();
     
-    const brands = useSelector(selectBrands)
+    const brands = useSelector(selectBrands);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -15,12 +16,14 @@ export default function Filters() {
         const formData = new FormData(e.target.form);
         const filters = {};
 
+        filters.page = 1;
     
         if (formData.get('brands')) filters.brand = formData.get('brands');
         if (formData.get('rentalPrice')) filters.rentalPrice = formData.get('rentalPrice');
         if (formData.get('minMileage')) filters.minMileage = formData.get('minMileage');
         if (formData.get('maxMileage')) filters.maxMileage = formData.get('maxMileage');
 
+        dispatch(resetCars());
         dispatch(fetchCars(filters));
     };
 

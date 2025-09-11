@@ -16,7 +16,7 @@ const carsSlice = createSlice({
         resetCars: (state) => {
             state.items = [];
             state.page = 1;
-            state.total = 0;
+            state.totalCars = 0;
             state.totalPages = 1;
             state.error = null;
         }
@@ -31,7 +31,13 @@ const carsSlice = createSlice({
         .addCase(fetchCars.fulfilled, (state, action) => {
             state.isLoading = false;
             const { cars, totalCars, totalPages, page } = action.payload;
-            state.items = cars;
+
+            if (page === "1") {
+                state.items = cars;
+            } else {
+                state.items = [...state.items, ...cars];
+            }
+            
             state.totalCars = totalCars;
             state.totalPages = totalPages;
             state.page = page;

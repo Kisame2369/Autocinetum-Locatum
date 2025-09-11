@@ -5,15 +5,17 @@
 }
 
 :root {
-  --black: #000;
+  --black: #101828;
   --white: #FFFFFF;
   --blue: #3470FF;
   --dark-blue: #0B44CD;
+  --gray: #8D929A;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--white);
 }
 
 h1,

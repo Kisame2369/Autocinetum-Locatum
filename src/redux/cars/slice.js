@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCars } from './operations.js';
+import { fetchCars, fetchCarById } from './operations.js';
 
 const carsSlice = createSlice({
     name: 'cars',
@@ -11,6 +11,7 @@ const carsSlice = createSlice({
         isLoading: false,
         error: null,
         currentFilters: {},
+        infoCar: null,
     },
 
     reducers: {
@@ -28,28 +29,37 @@ const carsSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-        .addCase(fetchCars.pending, (state) => {
-            state.isLoading = true;
-            state.error = null;
-        })
-        .addCase(fetchCars.fulfilled, (state, action) => {
-            state.isLoading = false;
-            const { cars, totalCars, totalPages, page } = action.payload;
+            .addCase(fetchCars.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+            })
+            .addCase(fetchCars.fulfilled, (state, action) => {
+                state.isLoading = false;
+                const { cars, totalCars, totalPages, page } = action.payload;
 
-            if (Number(page) === 1) {
-                state.items = cars;
-            } else {
-                state.items = [...state.items, ...cars];
-            }
+                if (Number(page) === 1) {
+                    state.items = cars;
+                } else {
+                    state.items = [...state.items, ...cars];
+                }
 
-            state.totalCars = totalCars;
-            state.totalPages = totalPages;
-            state.page = Number(page);
-        })
-        .addCase(fetchCars.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
-        });
+                state.totalCars = totalCars;
+                state.totalPages = totalPages;
+                state.page = Number(page);
+            })
+            .addCase(fetchCarById.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+                state.infoCar = null;
+            })
+            .addCase(fetchCarById.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.infoCar = action.payload;
+            })
+            .addCase(fetchCarById.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            });
     }
 });
 

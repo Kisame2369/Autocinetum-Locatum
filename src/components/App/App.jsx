@@ -1,10 +1,10 @@
-import { useEffect, lazy, Suspense } from "react";
-import { Routes, Route, Navigate  } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"
+import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 
 const MainPage = lazy(() => import("../../pages/MainPage/MainPage.jsx"));
 const Header = lazy(() => import("../Header/Header.jsx"));
 const CatalogPage = lazy(() => import("../../pages/CatalogPage/CatalogPage.jsx"));
+const CarPage = lazy(() => import("../../pages/CarPage/CarPage.jsx"))
 
 function App() {
   
@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/catalog/:id" element={<CarPage />} />
         </Routes>
       </Suspense>
     </>

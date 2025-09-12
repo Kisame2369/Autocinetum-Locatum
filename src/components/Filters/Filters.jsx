@@ -119,7 +119,7 @@ export default function Filters() {
                         name="maxMileage"
                         value={maxMileage ? formatNumber(maxMileage) : ''}
                         onChange={(e) => setMaxMileage(parseNumber(e.target.value))}
-                        minlength="3"
+                        minLength="3"
                         maxLength="7" />
                 </div>
             </div>

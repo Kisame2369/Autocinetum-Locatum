@@ -1,0 +1,77 @@
+.label {
+    font-family: Manrope, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--gray);
+    margin-bottom: 4px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    padding: 84px 0 56px 0;
+}
+
+.brand,
+.price,
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+}
+
+.from,
+.to {
+    width: 160px;
+    height: 44px;
+    background-color: var(--dark-white);
+    border-radius: 12px;
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    border: none;
+    color: var(--black);
+    outline: none;
+    box-shadow: none;
+    padding-left: 16px;
+}
+
+.from::placeholder,
+.to::placeholder {
+    color: var(--black);
+    
+}
+
+.div {
+    display: flex;
+}
+
+.from{
+    border-radius: 10px 0 0 10px;
+    border-right: 1px solid var(--light-gray);
+}
+
+.to{
+    border-radius: 0 10px 10px 0;
+}
+
+.btn {
+    width: 156px;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--blue);
+    color: var(--white);
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    transition: background-color 0.3s ease;
+    margin-top: auto;
+}
+
+.btn:hover{
+    background-color: var(--dark-blue);
+}

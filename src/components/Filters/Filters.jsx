@@ -2,7 +2,7 @@ import css from './Filters.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBrands } from '../../redux/brands/selectors';
 import { fetchCars } from '../../redux/cars/operations';
-import { resetCars } from '../../redux/cars/slice';
+import { resetCars, setFilters } from '../../redux/cars/slice';
 
 export default function Filters() {
 
@@ -25,6 +25,7 @@ export default function Filters() {
 
         dispatch(resetCars());
         dispatch(fetchCars(filters));
+        dispatch(setFilters(filters))
     };
 
     return (

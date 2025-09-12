@@ -1,4 +1,4 @@
-import { selectHasNextPage, selectCurrentPage } from '../../redux/cars/selectors';
+import { selectHasNextPage, selectCurrentPage, selectCurrentFilters } from '../../redux/cars/selectors';
 import { useSelector } from 'react-redux';
 import css from './LoadMoreBtn.module.css';
 import { useDispatch } from 'react-redux';
@@ -10,9 +10,13 @@ export default function LoadMoreBtn() {
 
     const hasNextPage = useSelector(selectHasNextPage);
     const currentPage = useSelector(selectCurrentPage);
+    const currentFilters = useSelector(selectCurrentFilters)
 
     const handleLoadMore = () => {
-        dispatch(fetchCars({ page: currentPage + 1 }));
+        dispatch(fetchCars({ 
+            ...currentFilters, 
+            page: currentPage + 1 
+        }));
     };
 
     return (

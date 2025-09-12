@@ -9,7 +9,8 @@ const carsSlice = createSlice({
         page: 1,
         totalPages: 0,
         isLoading: false,
-        error: null
+        error: null,
+        currentFilters: {},
     },
 
     reducers: {
@@ -19,6 +20,9 @@ const carsSlice = createSlice({
             state.totalCars = 0;
             state.totalPages = 1;
             state.error = null;
+        },
+        setFilters: (state, action) => {
+            state.currentFilters = action.payload;
         }
     },
 
@@ -49,6 +53,6 @@ const carsSlice = createSlice({
     }
 });
 
-export const { resetCars } = carsSlice.actions;
+export const { resetCars, setFilters } = carsSlice.actions;
 export default carsSlice.reducer;
       

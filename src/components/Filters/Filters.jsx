@@ -72,6 +72,32 @@ export default function Filters() {
         dispatch(setFilters(filters));
     };
 
+
+    const DropdownIndicator = ({ selectProps, ...props }) => (
+    <div
+        {...props.innerProps}
+        style={{
+            padding: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'transform 0.2s ease',
+            transform: selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            cursor: 'pointer'
+        }}
+    >
+        <img 
+            src="/arrow.svg" 
+            alt="dropdown arrow"
+            style={{ 
+                width: '16px', 
+                height: '16px' 
+            }}
+        />
+    </div>
+);
+
+
     return (
         <Formik
             initialValues={{
@@ -94,6 +120,7 @@ export default function Filters() {
                             options={brandOptions}
                             placeholder="Choose a brand"
                             styles={customSelectStylesBrand}
+                            components={{ DropdownIndicator }}
                         />
                     </div>
                     
@@ -106,6 +133,7 @@ export default function Filters() {
                             options={priceOptions}
                             placeholder="Choose a price"
                             styles={customSelectStylesPrice}
+                            components={{ DropdownIndicator }}
                             formatOptionLabel={(option, { context }) => {
                                 const style = {
                                     fontFamily: 'Manrope, sans-serif',

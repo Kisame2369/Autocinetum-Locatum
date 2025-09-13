@@ -5,6 +5,8 @@ import { fetchCarById } from "../../redux/cars/operations.js";
 import { selectInfoCar, selectIsLoading } from "../../redux/cars/selectors.js";
 import css from "./CarPage.module.css";
 import CarForm from "../../components/Form/Form.jsx"
+import Loader from "../../components/Loader/Loader.jsx";
+
 
 export default function CarPage() {
     
@@ -19,7 +21,7 @@ export default function CarPage() {
   }, [dispatch, id]);
 
   
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader/>
   if (!car) return null;
     
   const parts = car.address.split(",").map(str => str.trim());

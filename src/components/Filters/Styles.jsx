@@ -1,3 +1,5 @@
+// src/components/Filters/Styles.jsx
+
 export const customSelectStylesBrand = {
     control: (provided) => ({
         ...provided,
@@ -37,26 +39,6 @@ export const customSelectStylesBrand = {
 
     indicatorSeparator: () => ({
         display: 'none'
-    }),
-
-    dropdownIndicator: (provided, state) => ({
-        ...provided,
-        padding: '8px',
-        '& svg': {
-            display: 'none' 
-        },
-        '&::after': {
-            content: '""',
-            width: '16px',
-            height: '16px',
-            backgroundImage: 'url("/arrow.svg")',  
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundSize: 'contain',
-            display: 'block',
-            transform: state.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.2s ease'
-        }
     }),
     menu: (provided) => ({
         ...provided,
@@ -99,8 +81,8 @@ export const customSelectStylesBrand = {
         padding: '8px 0px',
         cursor: 'pointer',
         ':active': {
-        backgroundColor: 'transparent' 
-    },
+            backgroundColor: 'transparent' 
+        },
     })
 };
 
@@ -142,26 +124,6 @@ export const customSelectStylesPrice = {
 
     indicatorSeparator: () => ({
         display: 'none'
-    }),
-
-    dropdownIndicator: (provided, state) => ({
-        ...provided,
-        padding: '8px',
-        '& svg': {
-            display: 'none'
-        },
-        '&::after': {
-            content: '""',
-            width: '16px',
-            height: '16px',
-            backgroundImage: 'url("/arrow.svg")',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundSize: 'contain',
-            display: 'block',
-            transform: state.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.2s ease'
-        }
     }),
     menu: (provided) => ({
         ...provided,

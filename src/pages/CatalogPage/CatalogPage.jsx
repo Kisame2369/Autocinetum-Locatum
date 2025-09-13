@@ -1,12 +1,13 @@
 import css from "./CatalogPage.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { selectCars } from "../../redux/cars/selectors";
+import { selectCars, selectIsLoading } from "../../redux/cars/selectors";
 import { fetchCars } from "../../redux/cars/operations";
 import CarList from "../../components/CarList/CarList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import Filters from "../../components/Filters/Filters";
 import { fetchBrands } from "../../redux/brands/operations";
+import Loader from "../../components/Loader/Loader";
 
 export default function CatalogPage() { 
 
@@ -21,6 +22,9 @@ export default function CatalogPage() {
     }, [dispatch]);
 
     const cars = useSelector(selectCars);
+    const isLoading = useSelector(selectIsLoading)
+
+    if (isLoading) return <Loader/>
 
     return (
         <div className={css.catalogPage}>

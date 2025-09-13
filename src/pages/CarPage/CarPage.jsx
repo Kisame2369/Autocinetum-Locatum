@@ -42,7 +42,7 @@ export default function CarPage() {
         </div>
         <div className={css.body}>
           <svg className={css.map} width="16" height="16">
-            <use href="../../../public/sprite.svg#icon-map"></use>
+            <use href="/sprite.svg#icon-map"></use>
           </svg>
           <p className={css.location}>{city}, {country}</p>
           <p className={css.mileage}>Mileage: {run} km</p>
@@ -54,7 +54,7 @@ export default function CarPage() {
           {car.rentalConditions.map(condition => (
             <li className={css.listItem}>
               <svg className={css.check} width="16" height="16">
-                <use href="../../../public/sprite.svg#icon-check"></use>
+                <use href="/sprite.svg#icon-check"></use>
               </svg>
               {condition}
             </li>
@@ -64,25 +64,25 @@ export default function CarPage() {
         <ul className={css.list}>
           <li className={css.listItem}>
             <svg className={css.calendar} width="16" height="16">
-              <use href="../../../public/sprite.svg#icon-calendar"></use>
+              <use href="/sprite.svg#icon-calendar"></use>
             </svg>
             Year: {car.year}
           </li>
           <li className={css.listItem}>
             <svg className={css.car} width="16" height="16">
-              <use href="../../../public/sprite.svg#icon-car"></use>
+              <use href="/sprite.svg#icon-car"></use>
             </svg>
             Type: {car.type}
           </li>
           <li className={css.listItem}>
             <svg className={css.gas} width="16" height="16">
-              <use href="../../../public/sprite.svg#icon-gas"></use>
+              <use href="/sprite.svg#icon-gas"></use>
             </svg>
             Fuel Consumption: {car.fuelConsumption}
           </li>
           <li className={css.listItem}>
             <svg className={css.gear} width="16" height="16">
-              <use href="../../../public/sprite.svg#icon-gear"></use>
+              <use href="/sprite.svg#icon-gear"></use>
             </svg>
             Engine Size: {car.engineSize}
           </li>
@@ -100,7 +100,7 @@ export default function CarPage() {
           {car.functionalities.map(functionality => (
             <li className={css.listItem}>
               <svg className={css.check} width="16" height="16">
-                <use href="../../../public/sprite.svg#icon-check"></use>
+                <use href="/sprite.svg#icon-check"></use>
               </svg>
               {functionality}
             </li>

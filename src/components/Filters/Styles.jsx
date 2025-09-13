@@ -50,7 +50,7 @@ export const customSelectStylesBrand = {
             content: '""',
             width: '16px',
             height: '16px',
-            backgroundImage: 'url("../../../public/arrow.svg")',  
+            backgroundImage: 'url("/sprite.svg#icon-arrow")',  
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',

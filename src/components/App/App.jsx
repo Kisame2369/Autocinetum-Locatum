@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/catalog" element={<CatalogPage />} />

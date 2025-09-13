@@ -1,0 +1,100 @@
+.input {
+    background-color: var(--dark-white);
+    border-radius: 12px;
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--black);
+    width: 576px;
+    height: 48px;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.input::placeholder,
+.textarea::placeholder{
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--gray);
+}
+
+.fieldWrapper{
+    margin-bottom: 16px;
+}
+
+.textarea{
+    width: 576px;
+    height: 88px;
+    background-color: var(--dark-white);
+    border-radius: 12px;
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--black);
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    resize: none;
+}
+
+.error {
+    color: red;
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    margin-left: 20px;
+}
+
+.rForm{
+    width: 640px;
+    min-height: 488px;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 32px;
+}
+
+.titel {
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--black);
+    margin-bottom: 8px;
+}
+
+.text {
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+.btn {
+    width: 156px;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--blue);
+    color: var(--white);
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    transition: background-color 0.3s ease;
+    margin:0 auto auto auto;
+    display: block;
+}
+
+.btn:hover {
+    background-color: var(--dark-blue);
+}

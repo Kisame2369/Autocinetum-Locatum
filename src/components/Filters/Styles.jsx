@@ -1,3 +1,4 @@
+
 export const customSelectStylesBrand = {
     control: (provided) => ({
         ...provided,
@@ -7,7 +8,7 @@ export const customSelectStylesBrand = {
         borderRadius: '12px',
         backgroundColor: 'var(--dark-white)',
         boxShadow: 'none',
-        paddingLeft: '16px',
+        padding: '0 8px 0 16px',
         fontFamily: 'Manrope, sans-serif',
         fontWeight: '500',
         fontSize: '16px',
@@ -49,7 +50,7 @@ export const customSelectStylesBrand = {
             content: '""',
             width: '16px',
             height: '16px',
-            backgroundImage: 'url("/sprite.svg#icon-arrow")', 
+            backgroundImage: 'url("../../../public/arrow.svg")',  
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',
@@ -108,7 +109,7 @@ export const customSelectStylesPrice = {
         borderRadius: '12px',
         backgroundColor: 'var(--dark-white)',
         boxShadow: 'none',
-        paddingLeft: '16px',
+        padding: '0 8px 0 16px',
         fontFamily: 'Manrope, sans-serif',
         fontWeight: '500',
         fontSize: '16px',
@@ -149,7 +150,7 @@ export const customSelectStylesPrice = {
             content: '""',
             width: '16px',
             height: '16px',
-            backgroundImage: 'url("/sprite.svg#icon-arrow")', 
+            backgroundImage: 'url("../../../public/arrow.svg")', 
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',

@@ -21,22 +21,22 @@ export default function CarCard({ car }) {
             <div className={css.info}>
                 <div className={css.top}>
                 <span className={css.info}>{city}</span>
-                <svg className={css.separator} width="0" height="16">
-                    <use href="/public/sprite.svg#icon-separator"></use>
+                <svg className={css.separator} width="2" height="16">
+                    <use href="../../../public/sprite.svg#icon-separator"></use>
                 </svg>
                 <span className={css.info}>{country}</span>
-                <svg className={css.separator} width="0" height="16">
-                    <use href="/sprite.svg#icon-separator"></use>
+                <svg className={css.separator} width="2" height="16">
+                    <use href="../../../public/sprite.svg#icon-separator"></use>
                 </svg>
                 <span className={css.info}>{car.rentalCompany}</span>
-                <svg className={css.separator} width="0" height="16">
-                    <use href="/sprite.svg#icon-separator"></use>
+                <svg className={css.separator} width="2" height="16">
+                    <use href="../../../public/sprite.svg#icon-separator"></use>
                     </svg>
                 </div>
                 <div className={css.bottom}>
                     <span className={css.info}>{car.type}</span> 
-                    <svg className={css.separator} width="0" height="16">
-                    <use href="/sprite.svg#icon-separator"></use>
+                    <svg className={css.separator} width="2" height="16">
+                    <use href="../../../public/sprite.svg#icon-separator"></use>
                     </svg>
                     <span className={css.info}>{run} km</span>
                 </div>

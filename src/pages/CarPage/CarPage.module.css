@@ -1,0 +1,119 @@
+.image{
+   
+    width: 640px;
+    height: 512px;
+    object-fit: cover;
+    margin-bottom: 40px;
+    border-radius: 18.74px;
+}
+.carPage{
+    display: flex;
+    margin: 84px 120px 104px 120px;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    margin-right: 72px;
+}
+
+.titel {
+    color: var(--black);
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    margin-right: 16px;
+    text-wrap: nowrap;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.id {
+    font-family: Manrope ,sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--gray);
+    text-wrap: nowrap;
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.map{
+    margin-right: 4px;
+}
+
+.location,
+.mileage {
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--black);
+}
+
+.location{
+    margin-right: 16px;
+}
+
+.price{
+    color: var(--blue);
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 32px;
+}
+
+.description{
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--black);
+    margin-bottom: 68px;
+}
+
+.listTitel{
+    font-family: Manrope, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--black);
+    margin-bottom: 20px;
+}
+
+.listItem{
+    display: flex;
+    font-family: Manrope;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--black);
+    align-items: center;
+}
+
+.listItem:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.list {
+    margin-bottom: 110px;
+}
+.gear,
+.car,
+.gas,
+.calendar,
+.check{
+    margin-right: 8px;
+}

@@ -92,7 +92,7 @@ export default function CarPage() {
           {car.accessories.map(accessory => (
             <li className={css.listItem}>
               <svg className={css.check} width="16" height="16">
-                <use href="../../../public/sprite.svg#icon-check"></use>
+                <use href="/sprite.svg#icon-check"></use>
               </svg>
               {accessory}
             </li>

@@ -47,6 +47,10 @@ const carsSlice = createSlice({
                 state.totalPages = totalPages;
                 state.page = Number(page);
             })
+            .addCase(fetchCars.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
             .addCase(fetchCarById.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;

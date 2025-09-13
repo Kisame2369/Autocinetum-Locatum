@@ -1,4 +1,3 @@
-
 export const customSelectStylesBrand = {
     control: (provided) => ({
         ...provided,
@@ -50,7 +49,7 @@ export const customSelectStylesBrand = {
             content: '""',
             width: '16px',
             height: '16px',
-            backgroundImage: 'url("/sprite.svg#icon-arrow")',  
+            backgroundImage: 'url("/arrow.svg")',  
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',
@@ -78,6 +77,11 @@ export const customSelectStylesBrand = {
             width: '8px',
             
         },
+        '::-webkit-scrollbar-track': {
+            backgroundColor: 'transparent',
+            marginTop: '12px',
+            marginBottom: '12px',
+        },
         '::-webkit-scrollbar-thumb': {
             backgroundColor: 'var(--light-gray)',
             borderRadius: '10px',
@@ -101,7 +105,7 @@ export const customSelectStylesBrand = {
 };
 
 export const customSelectStylesPrice = {
-        control: (provided) => ({
+    control: (provided) => ({
         ...provided,
         width: '196px',
         height: '44px',
@@ -144,13 +148,13 @@ export const customSelectStylesPrice = {
         ...provided,
         padding: '8px',
         '& svg': {
-            display: 'none' 
+            display: 'none'
         },
         '&::after': {
             content: '""',
             width: '16px',
             height: '16px',
-            backgroundImage: 'url("../../../public/arrow.svg")', 
+            backgroundImage: 'url("/arrow.svg")',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',
@@ -176,7 +180,11 @@ export const customSelectStylesPrice = {
         position: 'relative',
         '::-webkit-scrollbar': {
             width: '8px',
-            
+        },
+        '::-webkit-scrollbar-track': {
+            backgroundColor: 'transparent',
+            marginTop: '12px',
+            marginBottom: '12px',
         },
         '::-webkit-scrollbar-thumb': {
             backgroundColor: 'var(--light-gray)',
@@ -195,7 +203,7 @@ export const customSelectStylesPrice = {
         padding: '8px 0px',
         cursor: 'pointer',
         ':active': {
-        backgroundColor: 'transparent' 
-    },
+            backgroundColor: 'transparent'
+        },
     })
 };

@@ -69,9 +69,17 @@
     font-size: 16px;
     line-height: 20px;
     transition: background-color 0.3s ease;
-    margin-top: auto;
+    margin-top: 20px;
 }
 
 .btn:hover{
     background-color: var(--dark-blue);
+}
+
+.errorMessage {
+    color: red;
+    font-family: Manrope, sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
 }

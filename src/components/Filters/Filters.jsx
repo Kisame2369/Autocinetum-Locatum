@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectBrands } from '../../redux/brands/selectors';
 import { fetchCars } from '../../redux/cars/operations';
 import { resetCars, setFilters } from '../../redux/cars/slice';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import Select from 'react-select';
-import { useState } from 'react';
 import { customSelectStylesBrand, customSelectStylesPrice } from './Styles';
 
 export default function Filters() {
@@ -18,11 +19,6 @@ export default function Filters() {
     };
 
     const parseNumber = (value) => value.replace(/,/g, '');
-
-    const [selectedBrand, setSelectedBrand] = useState(null);
-    const [selectedPrice, setSelectedPrice] = useState(null);
-    const [minMileage, setMinMileage] = useState('');
-    const [maxMileage, setMaxMileage] = useState('');
 
     const brandOptions = brands.map(brand => ({
         value: brand.toLowerCase(),
@@ -40,16 +36,36 @@ export default function Filters() {
         { value: '100', label: '100' }
     ];
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        
+    const validationSchema = Yup.object({
+        minMileage: Yup.string()
+            .matches(/^\d+$/, 'Only numbers allowed')
+            .test('min-length', 'Minimum 3 characters', (value) => {
+                if (!value) return true;
+                return value.replace(/,/g, '').length >= 3;
+            }),
+        maxMileage: Yup.string()
+            .matches(/^\d+$/, 'Only numbers allowed')
+            .test('min-length', 'Minimum 3 characters', (value) => {
+                if (!value) return true; 
+                return value.replace(/,/g, '').length >= 3;
+            })
+            .test('greater-than-min', 'Must be greater than "From" value', function(value) {
+                const { minMileage } = this.parent;
+                if (!value || !minMileage) return true;
+                const minNum = parseInt(parseNumber(minMileage));
+                const maxNum = parseInt(parseNumber(value));
+                return maxNum > minNum;
+            })
+    });
+
+    const handleSubmit = (values) => {
         const filters = {};
         filters.page = 1;
     
-        if (selectedBrand) filters.brand = selectedBrand.value;
-        if (selectedPrice) filters.rentalPrice = selectedPrice.value;
-        if (minMileage) filters.minMileage = minMileage;
-        if (maxMileage) filters.maxMileage = maxMileage;
+        if (values.selectedBrand) filters.brand = values.selectedBrand.value;
+        if (values.selectedPrice) filters.rentalPrice = values.selectedPrice.value;
+        if (values.minMileage) filters.minMileage = parseNumber(values.minMileage);
+        if (values.maxMileage) filters.maxMileage = parseNumber(values.maxMileage);
 
         dispatch(resetCars());
         dispatch(fetchCars(filters));
@@ -57,75 +73,96 @@ export default function Filters() {
     };
 
     return (
-        <form className={css.filters}>
-            <div className={css.brand}>
-                <label className={css.label} htmlFor="brand-select">Car brand</label>
-                <Select
-                    id="brand-select"
-                    value={selectedBrand}
-                    onChange={setSelectedBrand}
-                    options={brandOptions}
-                    placeholder="Choose a brand"
-                    styles={customSelectStylesBrand}
-                /></div>
-            <div className={css.price}>
-                <label className={css.label} htmlFor="rentalPrice-select">Price/ 1 hour</label>
-                <Select
-                    id="rentalPrice-select"
-                    value={selectedPrice}
-                    onChange={setSelectedPrice}
-                    options={priceOptions}
-                    placeholder="Choose a price"
-                    styles={customSelectStylesPrice}
-                    formatOptionLabel={(option, { context }) => {
-                        const style = {
-                            fontFamily: 'Manrope, sans-serif',
-                            fontWeight: 500,
-                            fontSize: '16px',
-                            lineHeight: '20px',
-                            color: 'var(--black)',
-                        };
+        <Formik
+            initialValues={{
+                selectedBrand: null,
+                selectedPrice: null,
+                minMileage: '',
+                maxMileage: ''
+            }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+        >
+            {({ values, setFieldValue, errors, touched }) => (
+                <Form className={css.filters}>
+                    <div className={css.brand}>
+                        <label className={css.label} htmlFor="brand-select">Car brand</label>
+                        <Select
+                            id="brand-select"
+                            value={values.selectedBrand}
+                            onChange={(selectedOption) => setFieldValue('selectedBrand', selectedOption)}
+                            options={brandOptions}
+                            placeholder="Choose a brand"
+                            styles={customSelectStylesBrand}
+                        />
+                    </div>
+                    
+                    <div className={css.price}>
+                        <label className={css.label} htmlFor="rentalPrice-select">Price/ 1 hour</label>
+                        <Select
+                            id="rentalPrice-select"
+                            value={values.selectedPrice}
+                            onChange={(selectedOption) => setFieldValue('selectedPrice', selectedOption)}
+                            options={priceOptions}
+                            placeholder="Choose a price"
+                            styles={customSelectStylesPrice}
+                            formatOptionLabel={(option, { context }) => {
+                                const style = {
+                                    fontFamily: 'Manrope, sans-serif',
+                                    fontWeight: 500,
+                                    fontSize: '16px',
+                                    lineHeight: '20px',
+                                    ...(context === 'value' && { color: 'var(--black)' })
+                                };
 
-                        if (context === 'value') {
-                            return <div style={style}>{`To $${option.value}`}</div>;
-                        }
+                                if (context === 'value') {
+                                    return <div style={style}>{`To $${option.value}`}</div>;
+                                }
 
-                        return <div style={style}>{option.label || `To $${option.value}`}</div>;
-                    }}
+                                return <div style={style}>{option.label || `To $${option.value}`}</div>;
+                            }}
+                        />
+                    </div>
 
-                />
-            </div>
-
-            <div className={css.input}>
-                <label className={css.label} htmlFor="mileage">Car mileage / km</label>
-                
-                <div className={css.div}>
-
-                    <input
-                        className={css.from}
-                        placeholder="From"
-                        type="text"
-                        id="mileage"
-                        name="minMileage"
-                        value={minMileage ? formatNumber(minMileage) : ''}
-                        onChange={(e) => setMinMileage(parseNumber(e.target.value))}
-                        minLength="3"
-                        maxLength="7" />
-                    <input
-                        className={css.to}
-                        placeholder="To"
-                        type="text"
-                        id="mileage"
-                        name="maxMileage"
-                        value={maxMileage ? formatNumber(maxMileage) : ''}
-                        onChange={(e) => setMaxMileage(parseNumber(e.target.value))}
-                        minLength="3"
-                        maxLength="7" />
-                </div>
-            </div>
-            <button onClick={handleSearch} className={css.btn}>
-                Search
-            </button>
-        </form>
+                    <div className={css.input}>
+                        <label className={css.label} htmlFor="mileage">Car mileage / km</label>
+                        
+                        <div className={css.div}>
+                            <div className={css.fieldWrapper}>
+                                <Field
+                                    name="minMileage"
+                                    type="text"
+                                    className={`${css.from} ${errors.minMileage && touched.minMileage ? css.error : ''}`}
+                                    placeholder="From"
+                                    value={values.minMileage ? formatNumber(values.minMileage) : ''}
+                                    onChange={(e) => setFieldValue('minMileage', parseNumber(e.target.value))}
+                                    minLength="3"
+                                    maxLength="7"
+                                />
+                                <ErrorMessage name="minMileage" component="div" className={css.errorMessage} />
+                            </div>
+                            
+                            <div className={css.fieldWrapper}>
+                                <Field
+                                    name="maxMileage"
+                                    type="text"
+                                    className={`${css.to} ${errors.maxMileage && touched.maxMileage ? css.error : ''}`}
+                                    placeholder="To"
+                                    value={values.maxMileage ? formatNumber(values.maxMileage) : ''}
+                                    onChange={(e) => setFieldValue('maxMileage', parseNumber(e.target.value))}
+                                    minLength="3"
+                                    maxLength="7"
+                                />
+                                <ErrorMessage name="maxMileage" component="div" className={css.errorMessage} />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" className={css.btn}>
+                        Search
+                    </button>
+                </Form>
+            )}
+        </Formik>
     );
 };

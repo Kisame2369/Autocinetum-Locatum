@@ -53,8 +53,10 @@ export const customSelectStylesBrand = {
     menuList: (provided) => ({
         ...provided,
         padding: '6px 0px 6px 18px',
-        maxHeight: '272px',
+        height: '272px',
         position: 'relative',
+        boxSizing: 'content-box',
+        borderRight: '8px solid transparent', 
         '::-webkit-scrollbar': {
             width: '8px',
             
@@ -140,6 +142,8 @@ export const customSelectStylesPrice = {
         padding: '6px 0px 6px 18px',
         maxHeight: '188px',
         position: 'relative',
+        boxSizing: 'content-box',
+        borderRight: '8px solid transparent',
         '::-webkit-scrollbar': {
             width: '8px',
         },

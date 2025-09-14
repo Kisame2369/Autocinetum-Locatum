@@ -10,8 +10,9 @@
   --blue: #3470FF;
   --dark-blue: #0B44CD;
   --gray: #8D929A;
-  --dark-white: #F2F4F7;
+  --dark-white: #F7F7F7; 
   --light-gray: #DADDE1;
+  --head-white: #F2F4F7;
 }
 
 body {

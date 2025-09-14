@@ -1,5 +1,5 @@
 .header{
-    background-color: #F2F4F7;
+    background-color: var(--head-white);
 }
 
 .navbar {
@@ -29,4 +29,13 @@
 
 .link:hover {
     color: var(--dark-blue);   
+}
+
+.active {
+    color: var(--dark-blue);
+    transition: color 0.3s ease;
+}
+
+.active:hover {
+    color: var(--black);
 }

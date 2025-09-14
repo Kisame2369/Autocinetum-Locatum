@@ -53,8 +53,8 @@ export default function CarPage() {
         <p className={css.description}>{car.description}</p>
         <h3 className={css.listTitel}>Rental Conditions:</h3>
         <ul className={css.list}>
-          {car.rentalConditions.map(condition => (
-            <li className={css.listItem}>
+          {car.rentalConditions.map((condition, index) => (
+            <li key={`condition-${index}`} className={css.listItem}>
               <svg className={css.check} width="16" height="16">
                 <use href="/sprite.svg#icon-check"></use>
               </svg>
@@ -91,16 +91,16 @@ export default function CarPage() {
         </ul>
         <h3 className={css.listTitel}>Accessories and functionalities:</h3>
         <ul className={css.lastList}>
-          {car.accessories.map(accessory => (
-            <li className={css.listItem}>
+          {car.accessories.map((accessory, index) => (
+            <li key={`accessory-${index}`} className={css.listItem}>
               <svg className={css.check} width="16" height="16">
                 <use href="/sprite.svg#icon-check"></use>
               </svg>
               {accessory}
             </li>
           ))}
-          {car.functionalities.map(functionality => (
-            <li className={css.listItem}>
+          {car.functionalities.map((functionality, index) => (
+            <li key={`functionality-${index}`} className={css.listItem}>
               <svg className={css.check} width="16" height="16">
                 <use href="/sprite.svg#icon-check"></use>
               </svg>

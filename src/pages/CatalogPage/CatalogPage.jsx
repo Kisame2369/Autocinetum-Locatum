@@ -29,8 +29,14 @@ export default function CatalogPage() {
     return (
         <div className={css.catalogPage}>
             <Filters/>
-            <CarList cars={cars} />
-            <LoadMoreBtn/>
+            {cars.length > 0 ? (
+                <>
+                    <CarList cars={cars} />
+                    <LoadMoreBtn/>
+                </>
+            ) : (
+                <p className={css.message}>No cars found for your request</p>
+            )}
         </div>
     );
 };

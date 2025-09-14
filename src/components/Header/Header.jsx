@@ -11,8 +11,23 @@ export default function Header() {
                     </svg>
                 </NavLink>
                 <div className={css.navLinks}>
-                    <NavLink to="/" className={css.link}>Home</NavLink>
-                    <NavLink to="/catalog" className={css.link}>Catalog</NavLink>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive ? `${css.link} ${css.active}` : css.link
+                        }
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/catalog"
+                        end 
+                        className={({ isActive }) =>
+                            isActive ? `${css.link} ${css.active}` : css.link
+                        }
+                    >
+                        Catalog
+                    </NavLink>
                 </div>
             </nav>
         </div>

@@ -18,7 +18,9 @@ export default function Filters() {
          return Number(number).toLocaleString();
     };
 
-    const parseNumber = (value) => value.replace(/,/g, '');
+    const parseNumber = (value) => {
+        return value.replace(/\D/g, '');
+    };
 
     const brandOptions = brands.map(brand => ({
         value: brand.toLowerCase(),
@@ -38,22 +40,22 @@ export default function Filters() {
 
     const validationSchema = Yup.object({
         minMileage: Yup.string()
-            .matches(/^\d+$/, 'Only numbers allowed')
-            .test('min-length', 'Minimum 3 characters', (value) => {
+            .test('min-length', 'Minimum 3 digits', (value) => {
                 if (!value) return true;
-                return value.replace(/,/g, '').length >= 3;
+                const numbersOnly = value.replace(/\D/g, '');
+                return numbersOnly.length >= 3;
             }),
         maxMileage: Yup.string()
-            .matches(/^\d+$/, 'Only numbers allowed')
-            .test('min-length', 'Minimum 3 characters', (value) => {
+            .test('min-length', 'Minimum 3 digits', (value) => {
                 if (!value) return true; 
-                return value.replace(/,/g, '').length >= 3;
+                const numbersOnly = value.replace(/\D/g, '');
+                return numbersOnly.length >= 3;
             })
             .test('greater-than-min', 'Must be greater than "From" value', function(value) {
                 const { minMileage } = this.parent;
                 if (!value || !minMileage) return true;
-                const minNum = parseInt(parseNumber(minMileage));
-                const maxNum = parseInt(parseNumber(value));
+                const minNum = parseInt(minMileage.replace(/\D/g, ''));
+                const maxNum = parseInt(value.replace(/\D/g, ''));
                 return maxNum > minNum;
             })
     });
@@ -72,7 +74,6 @@ export default function Filters() {
         dispatch(setFilters(filters));
     };
 
-
     const DropdownIndicator = ({ selectProps, ...props }) => (
         <div
             {...props.innerProps}
@@ -90,7 +91,6 @@ export default function Filters() {
             </svg>
         </div>
     );
-
 
     return (
         <Formik
@@ -156,10 +156,24 @@ export default function Filters() {
                                     type="text"
                                     className={`${css.from} ${errors.minMileage && touched.minMileage ? css.error : ''}`}
                                     placeholder="From"
-                                    value={values.minMileage ? formatNumber(values.minMileage) : ''}
-                                    onChange={(e) => setFieldValue('minMileage', parseNumber(e.target.value))}
-                                    minLength="3"
-                                    maxLength="7"
+                                    value={values.minMileage ? `From ${formatNumber(values.minMileage)}` : ''}
+                                    onChange={(e) => {
+                                        const numbersOnly = parseNumber(e.target.value);
+                                        if (numbersOnly.length <= 7) {
+                                            setFieldValue('minMileage', numbersOnly);
+                                        };
+                                    }}
+                                    onFocus={(e) => {
+                                        if (e.target.value === '') {
+                                            e.target.placeholder = '';
+                                        }
+                                    }}
+                                    onBlur={(e) => {
+                                        if (e.target.value === '' || e.target.value === 'From ') {
+                                            e.target.placeholder = 'From';
+                                            setFieldValue('minMileage', '');
+                                        }
+                                    }}
                                 />
                                 <ErrorMessage name="minMileage" component="div" className={css.errorMessage} />
                             </div>
@@ -170,10 +184,24 @@ export default function Filters() {
                                     type="text"
                                     className={`${css.to} ${errors.maxMileage && touched.maxMileage ? css.error : ''}`}
                                     placeholder="To"
-                                    value={values.maxMileage ? formatNumber(values.maxMileage) : ''}
-                                    onChange={(e) => setFieldValue('maxMileage', parseNumber(e.target.value))}
-                                    minLength="3"
-                                    maxLength="7"
+                                    value={values.maxMileage ? `To ${formatNumber(values.maxMileage)}` : ''}
+                                    onChange={(e) => {
+                                        const numbersOnly = parseNumber(e.target.value);
+                                        if (numbersOnly.length <= 7) {
+                                            setFieldValue('maxMileage', numbersOnly);
+                                        }
+                                    }}
+                                    onFocus={(e) => {
+                                        if (e.target.value === '') {
+                                            e.target.placeholder = '';
+                                        }
+                                    }}
+                                    onBlur={(e) => {
+                                        if (e.target.value === '' || e.target.value === 'To ') {
+                                            e.target.placeholder = 'To';
+                                            setFieldValue('maxMileage', '');
+                                        }
+                                    }}
                                 />
                                 <ErrorMessage name="maxMileage" component="div" className={css.errorMessage} />
                             </div>

@@ -1,12 +1,73 @@
-# React + Vite
+# RentalCar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application for car rental with a convenient catalog, filtering, and booking system.
 
-Currently, two official plugins are available:
+## Project description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+RentalCar is a front-end application for a car rental company. The project allows users to browse the catalog of available cars, filter them by various criteria, add them to their favorites, and book the options they like.
 
-## Expanding the ESLint configuration
+## Key features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Home page with an attractive banner and call to action
+
+- Car catalog with the ability to view all available cars
+
+- Smart filtering by brand, price, and mileage
+
+- Favorites system with selection saved between sessions
+
+- Detailed car pages with complete information
+
+- Booking form with validation and notifications
+
+- Pagination with additional results loading
+
+- Responsive design for comfortable use
+
+## Technology stack
+
+- Frontend Framework: React
+
+- Build Tool: Vite
+
+- State Management: Redux Toolkit + Redux Persist
+
+- Routing: React Router DOM
+
+- HTTP Client: Axios
+
+- Form Handling: Formik + Yup
+
+- Styling: CSS Modules
+
+- UI Components: Material-UI (Date Picker)
+
+- Notifications: iziToast
+
+- Date Handling: Day.js
+
+## Installation and launch
+
+- Cloning the repository
+
+  git clone <repository-url>
+
+  cd rental-car
+
+- Install dependencies
+
+  npm install
+
+- Run in development mode
+
+  npm run dev
+
+## API
+
+A ready-made backend is used: https://car-rental-api.goit.global
+
+Documentation: https://car-rental-api.goit.global/api-docs/
+
+## Author
+
+Ivan Nesterenko

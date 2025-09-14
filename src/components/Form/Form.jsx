@@ -112,7 +112,6 @@ function ButtonFieldDatePicker(props) {
                 fontWeight: 600,
                 fontSize: '12px',
                 lineHeight: '120%',
-                textAlign: 'center',
                 color: 'var(--gray)',
               },
               '& .MuiPickersCalendarHeader-label': {
@@ -120,15 +119,11 @@ function ButtonFieldDatePicker(props) {
                 fontWeight: 600,
                 fontSize: '16px',
                 lineHeight: '120%',
-                textAlign: 'center',
-                margin: '0 auto',
               },
               '& .MuiPickersCalendarHeader-switchViewButton': {
                 display: 'none',
               },
               '& .MuiPickersArrowSwitcher-button': {
-                width: '24px',
-                height: '24px',
                 color: 'var(--dark-blue)',
               }
             }

@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://car-rental-api.goit.global';
+import axios from "../../API/api"
 
 export const fetchBrands = createAsyncThunk(
   'brands/fetchBrands',

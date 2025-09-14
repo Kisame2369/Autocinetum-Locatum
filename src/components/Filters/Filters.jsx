@@ -74,28 +74,22 @@ export default function Filters() {
 
 
     const DropdownIndicator = ({ selectProps, ...props }) => (
-    <div
-        {...props.innerProps}
-        style={{
-            padding: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'transform 0.2s ease',
-            transform: selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-            cursor: 'pointer'
-        }}
-    >
-        <img 
-            src="/arrow.svg" 
-            alt="dropdown arrow"
-            style={{ 
-                width: '16px', 
-                height: '16px' 
+        <div
+            {...props.innerProps}
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'transform 0.3s ease',
+                transform: selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                cursor: 'pointer'
             }}
-        />
-    </div>
-);
+        >
+            <svg className={css.arrow} width="16" height="16">
+                <use href="/sprite.svg#icon-arrow"></use>
+            </svg>
+        </div>
+    );
 
 
     return (

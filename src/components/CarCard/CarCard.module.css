@@ -3,6 +3,7 @@
   height: 424px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .image {
@@ -70,5 +71,16 @@
 
 .button:hover{
   background-color: var(--dark-blue);
+}
+
+.favorite {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: none;
+  top: 16px;
+  right: 16px;
+  padding: 0;
 }
 

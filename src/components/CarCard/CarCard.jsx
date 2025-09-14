@@ -1,7 +1,14 @@
 import css from "./CarCard.module.css"; 
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite } from "../../redux/favorites/slice.js";
+import { selectIsFavorite } from "../../redux/favorites/selectors.js"
 
 export default function CarCard({ car }) {
+    
+    const dispatch = useDispatch();
+    const isFavorite = useSelector(selectIsFavorite(car.id));
+
 
     const parts = car.address.split(",").map(str => str.trim());
     const city = parts[parts.length - 2];
@@ -13,6 +20,13 @@ export default function CarCard({ car }) {
 
     return (
         <div className={css.carCard}>
+            <button onClick={() => dispatch(addFavorite(car.id))} className={css.favorite}>
+                {isFavorite ? <svg className={css.blue} width="16" height="16">
+                    <use href="/sprite.svg#icon-blue"></use>
+                </svg> : <svg className={css.heart} width="16" height="16">
+                    <use href="/sprite.svg#icon-heart"></use>
+                </svg>}
+            </button>
             <img src={car.img} alt={car.model} className={css.image} />
             <div className={css.head}>
                 <h2 className={css.titel}>{car.brand} <span className={css.model}>{car.model}</span>, {car.year}</h2>

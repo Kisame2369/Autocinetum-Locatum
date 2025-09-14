@@ -163,7 +163,6 @@ export default function CarForm({ onSubmit }) {
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             if (onSubmit) onSubmit(values);
-            else console.log("Submitted:", values);
             iziToast.success({
               title: "Success",
               message: "The car has been successfully rented!",
